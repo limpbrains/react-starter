@@ -3,6 +3,7 @@ var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var StatsPlugin = require("stats-webpack-plugin");
 var loadersByExtension = require("./config/loadersByExtension");
+var SvgStore = require('webpack-svgstore-plugin');
 
 module.exports = function(options) {
 	var entry = {
@@ -65,6 +66,15 @@ module.exports = function(options) {
 		/node_modules[\\\/]items-store[\\\/]/
 	];
 	var plugins = [
+		new SvgStore(path.join('./', 'svg', '**/*.svg'), path.join('svg'), {
+			name: '[hash].sprite.svg',
+			chunk: 'main',
+			// baseUrl: '//path-to-cdn:port/',
+			prefix: 'myprefix-',
+			svgoOptions: {
+				// options for svgo, optional
+			}
+		}),
 		new webpack.PrefetchPlugin("react"),
 		new webpack.PrefetchPlugin("react/lib/ReactComponentBrowserEnvironment")
 	];

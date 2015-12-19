@@ -50,6 +50,7 @@
   "devDependencies": {
     "babel-eslint": "^3.0.1",
     "eslint": "^0.22.0",
-    "eslint-plugin-react": "^2.2.0"
+    "eslint-plugin-react": "^2.2.0",
+    "webpack-svgstore-plugin": "^2.0.9"
   }
 }
